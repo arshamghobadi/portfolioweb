@@ -1,24 +1,31 @@
-import logo from './logo.svg';
 import './App.css';
+import HomePage from './components/home/HomePage';
+import Layout from './components/layout/Layout';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import Projects from './components/projects/Projects';
+import Posts from './components/posts/Posts';
+import AboutMe from './components/aboutme/AboutMe';
+import Email from './components/e-mail/Email';
+import ProjectsDetials from './shared/ProjectsDetials';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Layout>
+        <Routes>
+          <Route path="/Arsham-Ghobadi-Portfolio" element={<HomePage />} />
+          <Route path="/portfolio/:slug" element={<ProjectsDetials />} />
+          <Route path="/portfolio" element={<Projects />} />
+          <Route path="/blogs" element={<Posts />} />
+          <Route path="/about-me" element={<AboutMe />} />
+          <Route path="/e-mail" element={<Email />} />
+          <Route
+            path="/"
+            element={<Navigate to="/Arsham-Ghobadi-Portfolio" />}
+          />
+        </Routes>
+      </Layout>
+    </>
   );
 }
 
